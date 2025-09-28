@@ -8,6 +8,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     { to: "/", label: "Home" },
     { to: "/projects", label: "Projects" },
     { to: "/experience", label: "Experience" },
+    { to: "/devlab", label: "DevLab" },
   ];
 
   return (
