@@ -1,4 +1,8 @@
+import bahfedLogo from "@/assets/bahfed_logo.png";
+import onsemiLogo from "@/assets/onsemi_logo.png";
+import toshalLogo from "@/assets/toshal_logo.png";
 import Layout from "@/components/Layout";
+
 
 type ExperienceItem = {
   company: string;
@@ -15,7 +19,7 @@ const experiences: ExperienceItem[] = [
     role: "Software Engineer",
     period: "Apr 2024 – Present",
     location: "Scottsdale, AZ",
-    logo: "/placeholder.svg",
+    logo: onsemiLogo,
     bullets: [
       "Designed and deployed scalable backend services with Java, Spring Boot, and PostgreSQL.",
       "Built a GenAI-powered chatbot (Spring WebFlux + LLM APIs) for real-time customer support.",
@@ -29,7 +33,7 @@ const experiences: ExperienceItem[] = [
     role: "Software Engineer Intern",
     period: "May 2023 – Dec 2023",
     location: "Portland, OR",
-    logo: "/placeholder.svg",
+    logo: bahfedLogo,
     bullets: [
       "Enhanced ERP modules (C#/.NET, SQL Server) to streamline order, billing, and inventory flows.",
       "Optimized backend APIs and SQL queries; improved response times by ~30%.",
@@ -41,7 +45,7 @@ const experiences: ExperienceItem[] = [
     role: "Software Engineer Intern",
     period: "Dec 2021 – May 2022",
     location: "Surat, India",
-    logo: "/placeholder.svg",
+    logo: toshalLogo,
     bullets: [
       "Built POS and revenue management platform with C#/.NET and REST APIs.",
       "Implemented NLP-based search to improve product lookup accuracy.",
