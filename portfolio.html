@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aakanksha Desai — Software Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0d14;
+    --bg2: #0f1420;
+    --bg3: #141926;
+    --card: #131825;
+    --card-border: rgba(255,255,255,0.07);
+    --amber: #e8a020;
+    --amber-dim: #c4851a;
+    --amber-glow: rgba(232,160,32,0.12);
+    --text: #e8e4dc;
+    --text-muted: #8a8a96;
+    --text-dim: #555568;
+    --mono: 'IBM Plex Mono', monospace;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 4rem;
+    background: rgba(10,13,20,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--amber);
+    letter-spacing: 0.08em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 4rem 4rem;
+    gap: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(232,160,32,0.06) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--amber);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 2rem;
+    height: 1px;
+    background: var(--amber);
+  }
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--amber);
+  }
+  .hero-desc {
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 480px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    background: var(--amber);
+    color: #0a0d14;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+  }
+  .btn-primary:hover { background: #f0a820; transform: translateY(-1px); }
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    border: 1px solid rgba(232,160,32,0.4);
+    color: var(--amber);
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s, transform 0.1s;
+  }
+  .btn-outline:hover {
+    background: var(--amber-glow);
+    border-color: var(--amber);
+    transform: translateY(-1px);
+  }
+
+  /* Hero right panel */
+  .hero-right {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--amber);
+    opacity: 0.6;
+  }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--amber);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .tech-stack-pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  .pill {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    padding: 0.3rem 0.75rem;
+    border: 1px solid rgba(232,160,32,0.25);
+    color: var(--amber-dim);
+    letter-spacing: 0.05em;
+    background: rgba(232,160,32,0.04);
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 6rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--amber);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 1.5rem;
+    height: 1px;
+    background: var(--amber);
+  }
+  h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 3rem;
+  }
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.06), transparent);
+    margin: 0;
+  }
+
+  /* ── EXPERIENCE ── */
+  .exp-timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+  .exp-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.75rem;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--amber), transparent);
+    opacity: 0.4;
+  }
+  .exp-item {
+    position: relative;
+    padding: 0 0 3rem 2rem;
+  }
+  .exp-item::before {
+    content: '';
+    position: absolute;
+    left: -2rem;
+    top: 0.6rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    background: var(--amber);
+    border-radius: 50%;
+  }
+  .exp-meta {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .exp-company {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .exp-role {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--amber);
+    letter-spacing: 0.08em;
+    margin-top: 0.2rem;
+  }
+  .exp-date {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    margin-top: 0.3rem;
+  }
+  .exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 1rem;
+  }
+  .exp-bullets li {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    padding-left: 1.25rem;
+    position: relative;
+  }
+  .exp-bullets li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--amber);
+    opacity: 0.6;
+    font-size: 0.75rem;
+    top: 0.05rem;
+  }
+  .metric {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    padding: 2rem;
+    position: relative;
+    transition: border-color 0.25s, transform 0.25s;
+    overflow: hidden;
+  }
+  .project-card:hover {
+    border-color: rgba(232,160,32,0.3);
+    transform: translateY(-3px);
+  }
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--amber), transparent);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+  .project-card:hover::before { opacity: 1; }
+  .project-num {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+  }
+  .project-title {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+  .project-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .tag {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    padding: 0.25rem 0.65rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .skill-group {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    padding: 1.75rem;
+  }
+  .skill-group-title {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--amber);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(232,160,32,0.15);
+  }
+  .skill-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+  .skill-list li {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .skill-list li::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--amber);
+    opacity: 0.5;
+    flex-shrink: 0;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .about-text p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+    line-height: 1.85;
+  }
+  .about-text p strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+  .cert-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .cert-name {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+  }
+  .cert-issuer {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+  }
+  .edu-item { margin-bottom: 1.5rem; }
+  .edu-degree {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+  .edu-school {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+  .edu-meta {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    margin-top: 0.2rem;
+  }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    text-align: center;
+    padding: 6rem 4rem;
+    position: relative;
+  }
+  .contact-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 300px;
+    background: radial-gradient(ellipse, rgba(232,160,32,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .contact-section h2 { margin-bottom: 1rem; }
+  .contact-section p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    max-width: 440px;
+    margin: 0 auto 2.5rem;
+  }
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer p {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-left > * { animation: fadeUp 0.7s ease both; }
+  .hero-left > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-left > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-left > *:nth-child(3) { animation-delay: 0.35s; }
+  .hero-left > *:nth-child(4) { animation-delay: 0.5s; }
+  .hero-right { animation: fadeUp 0.9s 0.3s ease both; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 2rem; }
+    .hero { grid-template-columns: 1fr; padding: 7rem 2rem 3rem; }
+    .hero-right { display: none; }
+    section { padding: 4rem 2rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    footer { flex-direction: column; gap: 0.5rem; padding: 1.5rem 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Aakanksha Desai</a>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="max-width:none; padding-top:8rem; padding-bottom:4rem;">
+  <div class="hero-left">
+    <div class="hero-tag">Software Engineer</div>
+    <div style="font-family:var(--serif); font-size:clamp(1rem,1.5vw,1.2rem); font-weight:400; color:var(--text-muted); letter-spacing:0.04em; margin-bottom:0.5rem;">Aakanksha Desai</div>
+    <h1>Building systems<br>that <em>scale</em> without<br>breaking.</h1>
+    <p class="hero-desc">
+      Distributed systems, cloud-native infrastructure, and AI-powered platforms.
+      Java · Spring Boot · Kafka · Kubernetes · AWS — and the AI stack on top.
+    </p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">Get in touch ↗</a>
+      <a href="#experience" class="btn-outline">View work</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-num">30%</div>
+        <div class="stat-label">p99 Latency Reduction</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">500K+</div>
+        <div class="stat-label">Daily Events Processed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">60%</div>
+        <div class="stat-label">Deploy Effort Slashed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">12m</div>
+        <div class="stat-label">MTTR (down from 45m)</div>
+      </div>
+    </div>
+    <div class="tech-stack-pill-row" style="margin-top:1.25rem;">
+      <span class="pill">Java</span>
+      <span class="pill">Spring Boot</span>
+      <span class="pill">Kafka</span>
+      <span class="pill">Kubernetes</span>
+      <span class="pill">AWS</span>
+      <span class="pill">Terraform</span>
+      <span class="pill">Python</span>
+      <span class="pill">LangChain</span>
+      <span class="pill">RAG</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Career</div>
+  <h2>Work Experience</h2>
+
+  <div class="exp-timeline">
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div>
+          <div class="exp-company">Onsemi</div>
+          <div class="exp-role">Software Engineer</div>
+        </div>
+        <div class="exp-date">Apr 2024 — Present · Scottsdale, AZ</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Cut <span class="metric">p99 response latency by 30%</span> and processed <span class="metric">500K+ daily events</span> by engineering distributed backend services in Java Spring Boot and Python on AWS, leveraging Kafka, Redis, and Lambda with fault-tolerant circuit-breaker and retry patterns.</li>
+        <li>Reduced <span class="metric">MTTR from 45 min → 12 min</span> across 8+ microservices by spearheading full observability infrastructure with CloudWatch, centralized logging, and proactive alerting dashboards enabling incident detection before customer impact.</li>
+        <li>Slashed <span class="metric">manual deployment effort by 60%</span> and achieved zero-downtime releases by architecting end-to-end delivery lifecycle using Docker, Kubernetes, and Terraform IaC.</li>
+        <li>Compressed <span class="metric">release cycles from 2 weeks to 3 days</span> by owning and automating CI/CD pipelines with GitHub Actions and Jenkins, implementing automated test gates and rollback policies.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div>
+          <div class="exp-company">Auto BIM Route AI</div>
+          <div class="exp-role">Software Engineer Intern</div>
+        </div>
+        <div class="exp-date">Jan 2024 — May 2024 · Phoenix, AZ</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Built full-stack features using React, TypeScript, and Node.js, connecting backend services to visualize BIM routes and design metadata.</li>
+        <li>Optimized backend data pipelines and frontend rendering paths to handle large, complex models. Explored LLM-based tooling for design metadata parsing and route suggestions.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div>
+          <div class="exp-company">Bahfed Corp</div>
+          <div class="exp-role">Software Engineer Intern</div>
+        </div>
+        <div class="exp-date">Apr 2023 — Dec 2023 · Portland, OR</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Improved <span class="metric">transaction throughput 3x</span> and cut financial report load times <span class="metric">~60%</span> by architecting Kafka-based async event-driven pipelines and optimizing SQL Server queries with Redis caching.</li>
+        <li>Reduced <span class="metric">feature development time ~25%</span> and cut hotfix deployment time from hours to under 20 minutes by designing REST and GraphQL APIs integrated into Jenkins CI/CD workflows.</li>
+        <li>Enabled <span class="metric">pipeline failure resolution ~50% faster</span> across 5 data pipelines by implementing structured logging and distributed tracing with the SRE team; integrated OAuth2 and JWT authentication.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item" style="padding-bottom:0;">
+      <div class="exp-meta">
+        <div>
+          <div class="exp-company">Toshal Infotech</div>
+          <div class="exp-role">Software Engineer Intern</div>
+        </div>
+        <div class="exp-date">Dec 2021 — Apr 2022 · Surat, India</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Contributed to a point-of-sale and revenue management platform built on C#/.NET, refactoring legacy components into microservices and designing REST APIs to improve system throughput.</li>
+        <li>Automated reporting workflows and KPI dashboards, reducing manual effort and improving stakeholder visibility into operations.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Work</div>
+  <h2>Featured Projects</h2>
+
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-num">01 / AI-POWERED</div>
+      <div class="project-title">AI-Powered Sticky Notes Platform</div>
+      <p class="project-desc">Full-stack note platform with a RAG-based retrieval pipeline — notes embedded via OpenAI text-embedding-3-small and indexed in pgvector, delivering semantic search in under 200ms across 10,000+ collections. LangChain agent workflows for multi-step AI actions including summarization, categorization, and cross-linking.</p>
+      <div class="project-tags">
+        <span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">FastAPI</span>
+        <span class="tag">PostgreSQL</span><span class="tag">pgvector</span><span class="tag">LangChain</span>
+        <span class="tag">OpenAI</span><span class="tag">RAG</span><span class="tag">Docker</span><span class="tag">AWS</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">02 / CLOUD-NATIVE</div>
+      <div class="project-title">Serverless Video Processing Pipeline</div>
+      <p class="project-desc">Event-driven transcoding system with parallel Lambda workers, dead-letter queue, exponential backoff retry, and CloudWatch alarms — achieving 99.95% job-completion rate in load testing. DynamoDB schema with composite keys and GSIs for real-time job status queries at sub-10ms read latency under 1,000 concurrent users.</p>
+      <div class="project-tags">
+        <span class="tag">AWS Lambda</span><span class="tag">S3</span><span class="tag">API Gateway</span>
+        <span class="tag">DynamoDB</span><span class="tag">FFmpeg</span><span class="tag">CloudWatch</span>
+        <span class="tag">DLQ</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">03 / DATA ENGINEERING · IN PROGRESS</div>
+      <div class="project-title">Real-Time E-Commerce Data Pipeline</div>
+      <p class="project-desc">End-to-end streaming data pipeline handling real-time event ingestion, transformation, and analytics. Built with Kafka for event streaming, Redis for caching hot paths, and PostgreSQL for persistence — all containerized with Docker and deployed to AWS with a FastAPI layer and React dashboard.</p>
+      <div class="project-tags">
+        <span class="tag">Python</span><span class="tag">Kafka</span><span class="tag">PostgreSQL</span>
+        <span class="tag">Redis</span><span class="tag">FastAPI</span><span class="tag">React</span>
+        <span class="tag">Docker</span><span class="tag">AWS</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">04 / AI ENGINEERING · IN PROGRESS</div>
+      <div class="project-title">Customer Churn Prediction Platform</div>
+      <p class="project-desc">ML platform with XGBoost churn model, MLflow experiment tracking, SHAP explanability, and a FastAPI inference endpoint — plus an LLM agent layer for plain-English explanations, React dashboard, Docker packaging, and AWS deployment. Designed to demonstrate AI engineering depth.</p>
+      <div class="project-tags">
+        <span class="tag">Python</span><span class="tag">XGBoost</span><span class="tag">MLflow</span>
+        <span class="tag">SHAP</span><span class="tag">FastAPI</span><span class="tag">LLM</span>
+        <span class="tag">React</span><span class="tag">Docker</span><span class="tag">AWS</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Stack</div>
+  <h2>Technical Skills</h2>
+
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-title">Languages & Data</div>
+      <ul class="skill-list">
+        <li>Java, Python, Go</li>
+        <li>TypeScript, JavaScript, Scala, C#</li>
+        <li>React, Angular</li>
+        <li>PostgreSQL, SQL Server, DynamoDB</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Distributed Systems</div>
+      <ul class="skill-list">
+        <li>Microservices Architecture</li>
+        <li>Event-Driven Design (Kafka)</li>
+        <li>Redis, REST, gRPC, GraphQL</li>
+        <li>Spring Boot, FastAPI, Node.js</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Cloud & Infrastructure</div>
+      <ul class="skill-list">
+        <li>AWS (Lambda, EC2, S3, RDS, EKS)</li>
+        <li>Docker, Kubernetes, Terraform</li>
+        <li>GitHub Actions, Jenkins (CI/CD)</li>
+        <li>CloudWatch, OpenTelemetry</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">GenAI Stack</div>
+      <ul class="skill-list">
+        <li>LLMs, RAG Pipelines</li>
+        <li>LangChain, AI Agents</li>
+        <li>OpenAI API, pgvector</li>
+        <li>Prompt Engineering, SHAP / MLflow</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Practices</div>
+      <ul class="skill-list">
+        <li>System Design & Architecture</li>
+        <li>TDD — Unit & Integration Testing</li>
+        <li>Observability & Site Reliability</li>
+        <li>Agile / Scrum, Code Review</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Certifications</div>
+      <ul class="skill-list">
+        <li>AWS Solutions Architect – Associate</li>
+        <li>Generative AI with LLMs (Coursera)</li>
+        <li>Data Science Methodology (IBM)</li>
+        <li>Intermediate ML: TensorFlow on GCP</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">Background</div>
+  <h2>About Me</h2>
+
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I'm a software engineer specializing in <strong>distributed backend systems and cloud-native infrastructure</strong>, currently building production systems at Onsemi that process hundreds of thousands of events daily. My core stack is Java Spring Boot and Python on AWS — Kafka, Redis, Kubernetes, and Terraform are daily tools, not buzzwords.
+      </p>
+      <p>
+        I care deeply about <strong>observability, reliability, and the engineering culture around them</strong> — the kind of systems that you can sleep through an on-call rotation because you built them right. I've reduced MTTR from 45 to 12 minutes and compressed release cycles from 2 weeks to 3 days; those numbers come from treating infrastructure as a product, not an afterthought.
+      </p>
+      <p>
+        I'm increasingly working at the <strong>backend-AI intersection</strong> — RAG pipelines, LangChain agents, vector databases, LLM inference endpoints. This is where the most interesting system design problems live right now, and it's the area I'm investing in most deeply. My churn prediction platform and sticky notes projects reflect that bet.
+      </p>
+      <p>
+        I hold an <strong>MS in Software Engineering from Arizona State University</strong> (3.8 GPA) and an AWS Solutions Architect Associate certification, and I'm completing the IBM Data Science Specialization. I'm based in the NYC/NJ metro area, open to backend SWE, platform engineering, data engineering, and AI engineering roles.
+      </p>
+    </div>
+
+    <div>
+      <div style="margin-bottom:2rem;">
+        <div class="section-label" style="margin-bottom:1rem;">Education</div>
+        <div class="edu-item">
+          <div class="edu-degree">MS, Software Engineering</div>
+          <div class="edu-school">Arizona State University</div>
+          <div class="edu-meta">GPA 3.8 · Aug 2022 — May 2024 · Tempe, AZ</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-degree">BTech, Computer Science Engineering</div>
+          <div class="edu-school">Navrachana University</div>
+          <div class="edu-meta">GPA 3.7 · Jul 2018 — May 2022 · India</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-label" style="margin-bottom:1rem;">Certifications</div>
+        <div class="cert-card">
+          <div class="cert-name">AWS Certified Solutions Architect – Associate</div>
+          <div class="cert-issuer">Amazon Web Services · Jan 2026</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-name">Generative AI with Large Language Models</div>
+          <div class="cert-issuer">Coursera / DeepLearning.AI</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-name">Data Science Methodology</div>
+          <div class="cert-issuer">IBM / Coursera</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-name">Intermediate ML: TensorFlow on GCP</div>
+          <div class="cert-issuer">Google Cloud / Coursera</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <div class="section-label" style="justify-content:center;">Contact</div>
+  <h2>Let's work together.</h2>
+  <p>Open to backend SWE, platform engineering, data engineering, and AI engineering roles in the NYC/NJ metro or remote. Let's talk.</p>
+  <div class="contact-links">
+    <a href="mailto:aakanksha15desai@gmail.com" class="btn-primary">aakanksha15desai@gmail.com ↗</a>
+    <a href="https://www.linkedin.com/in/aakankshadesai152" target="_blank" class="btn-outline">LinkedIn</a>
+    <a href="https://aakankshadesaiportfolio.netlify.app/" target="_blank" class="btn-outline">Portfolio</a>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Aakanksha Desai</p>
+  <p>Software Engineer · Backend · Platform · AI</p>
+</footer>
+
+</body>
+</html>
